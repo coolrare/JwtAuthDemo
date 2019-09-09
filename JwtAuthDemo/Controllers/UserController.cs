@@ -7,14 +7,12 @@ using System.Web.Http;
 
 namespace JwtAuthDemo.Controllers
 {
-    [AllowAnonymous]
-    public class HomeController : ApiController
+    [Authorize]
+    public class UserController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "Hello", "World" };
+            return Ok(new { User.Identity.Name });
         }
-
     }
 }
